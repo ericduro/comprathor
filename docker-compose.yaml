@@ -1,0 +1,58 @@
+version: '3.7'
+
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - 8080:8080
+    depends_on:
+      - mysqldb
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:mariadb://mysqldb:3306/tfm_mysql
+      - SPRING_DATASOURCE_USERNAME=master
+      - SPRING_DATASOURCE_PASSWORD=master
+    networks:
+      - springboot-mysql-network
+
+  mysqldb:
+    image: mariadb
+    ports:
+      - 3308:3306
+    environment:
+      - MARIADB_DATABASE=tfm_mysql
+      - MARIADB_ROOT_PASSWORD=Ericmysql
+      - MYSQL_USER=master
+      - MYSQL_PASSWORD=master
+    volumes:
+      - ./mysql-data:/var/lib/mysql
+      - ./mysql-scripts:/docker-entrypoint-initdb.d
+    networks:
+      - springboot-mysql-network
+
+  keycloak:
+    image: quay.io/keycloak/keycloak:latest
+    ports:
+      - 9090:8080
+    environment:
+      - KEYCLOAK_ADMIN=master
+      - KEYCLOAK_ADMIN_PASSWORD=master
+    command: start-dev --import-realm
+    volumes:
+      - ./keycloak:/opt/keycloak/data/import
+
+  frontend:
+    image: node:latest
+    working_dir: /app
+    volumes:
+      - ./reactjs-comprathor:/app
+    ports:
+      - 3000:3000
+    command: npm start
+    networks:
+      - springboot-mysql-network
+
+networks:
+  springboot-mysql-network:
+    name: springboot-mysql-network

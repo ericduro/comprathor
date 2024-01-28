@@ -1,0 +1,100 @@
+/* Agrega estos estilos en tu archivo CSS, por ejemplo, Comparison.css */
+
+.main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+  }
+  
+  .category-dropdown {
+    margin-bottom: 20px;
+  }
+  
+  .comparison-container {
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+    border: 2px solid #ddd; /* Borde alrededor de la sección de comparación */
+    border-radius: 8px; /* Esquinas redondeadas */
+    overflow: hidden; /* Evita que los bordes redondeados se vean afectados por los hijos */
+  }
+  
+  .comparison-column {
+    flex: 1;
+    max-width: 400px;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin: 10px;
+    border-right: 2px solid #ddd; /* Borde derecho para separar las columnas */
+  }
+  
+  .comparison-column:last-child {
+    border-right: none; /* Elimina el borde derecho de la última columna */
+  }
+  
+  .comparison-column img {
+    width: 100%;
+    height: auto;
+    margin-top: 10px;
+  }
+  
+  .product-dropdown {
+    width: 100%;
+    margin-bottom: 20px;
+  }
+  
+  .product-details {
+    text-align: center;
+    border: 2px solid #ddd; /* Borde alrededor de la sección de detalles del producto */
+    border-radius: 8px; /* Esquinas redondeadas */
+    padding: 20px;
+    margin-top: 20px;
+  }
+  
+  .product-details img {
+    max-width: 100%;
+    height: auto;
+    margin-top: 10px;
+  }
+
+  .comparison-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+  }
+  
+  .comparison-content {
+    display: flex;
+    justify-content: space-around;
+    align-items: flex-start;
+  }
+  
+  .product-column {
+    flex: 1;
+    max-width: 400px;
+    margin: 10px;
+  }
+  
+  .product-dropdown {
+    margin-bottom: 20px;
+    width: 100%;
+  }
+  
+  .product-details {
+    text-align: center;
+    border: 2px solid #ddd;
+    border-radius: 8px;
+    padding: 20px;
+    margin-top: 20px;
+  }
+  
+  .product-details img {
+    max-width: 100%;
+    height: auto;
+    margin-top: 10px;
+  }  
+  

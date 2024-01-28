@@ -1,0 +1,76 @@
+.product-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 20px;
+}
+
+.product-card {
+  border: 1px solid #ddd;
+  padding: 10px;
+  text-align: center;
+}
+
+.product-card img {
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.filter-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.filter-container .p-dropdown {
+  margin-right: 10px; /* Ajusta el espacio entre el Dropdown y el botón */
+}
+
+.filter-container button {
+  font-size: inherit; /* Hereda el tamaño de fuente del contenedor */
+  padding: 8px 16px; /* Ajusta el espacio dentro del botón */
+}
+
+.p-dialog-content button {
+  font-size: inherit; /* Hereda el tamaño de fuente del contenedor */
+  padding: 8px 16px; /* Ajusta el espacio dentro del botón */
+  width: 100%;
+}
+
+.p-dialog-content form div {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 10px;
+  width: 100%; /* Añade un ancho al contenedor para ocupar todo el espacio disponible */
+}
+
+.p-dialog-content form label,
+.p-dialog-content form input,
+.p-dialog-content form textarea,
+.p-dialog-content form .p-dropdown {
+  width: 48%; /* Define el ancho de cada elemento */
+  box-sizing: border-box;
+}
+
+.p-dialog-content form label {
+  font-size: inherit;
+  margin-right: 10px;
+  width: 15%; /* Ancho del label */
+}
+
+.p-dialog-content form input,
+.p-dialog-content form textarea,
+.p-dialog-content form .p-dropdown {
+  font-size: inherit;
+  padding: 8px;
+  width: 85%; /* Ancho del input */
+}
+
+@media (max-width: 767px) {
+  .p-dialog-content form label,
+  .p-dialog-content form input,
+  .p-dialog-content form textarea,
+  .p-dialog-content form .p-dropdown {
+    width: 100%; /* Cambia a una columna para dispositivos móviles */
+  }
+}
