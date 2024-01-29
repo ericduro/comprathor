@@ -1,7 +1,7 @@
 # Stage 1: Build the frontend
 FROM node:14 AS frontend-builder
 
-WORKDIR /app
+WORKDIR /app/reactjs-comprathor
 
 COPY ./reactjs-comprathor/package.json .
 COPY ./reactjs-comprathor/package-lock.json .
