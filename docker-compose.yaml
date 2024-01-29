@@ -41,6 +41,8 @@ services:
     command: start-dev --import-realm
     volumes:
       - ./keycloak:/opt/keycloak/data/import
+    networks:
+      - springboot-mysql-network
 
   frontend:
     image: node:latest
@@ -49,7 +51,7 @@ services:
       - ./reactjs-comprathor:/app
     ports:
       - 3000:3000
-    command: npm start
+    command: sh -c "npm install && npm start"
     networks:
       - springboot-mysql-network
 
