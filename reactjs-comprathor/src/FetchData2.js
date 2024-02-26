@@ -1,6 +1,8 @@
 import React, { useEffect } from "react";
 
-const url = 'localhost:8080/product/all'
+import { backend } from "./Variables";
+
+const url = backend + '/product/all'
 
 const FetchData2 = () => {
     let fetchData = async ()=>{

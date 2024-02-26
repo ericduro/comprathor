@@ -2,11 +2,9 @@ version: '3.7'
 
 services:
   app:
-    build:
-      context: .
-      dockerfile: Dockerfile
+    image: comprathor_back:0.0.1
     ports:
-      - 8080:8080
+      - 8081:8080
     depends_on:
       - mysqldb
     environment:
@@ -34,7 +32,7 @@ services:
   keycloak:
     image: quay.io/keycloak/keycloak:latest
     ports:
-      - 9090:8080
+      - 8080:8080
     environment:
       - KEYCLOAK_ADMIN=master
       - KEYCLOAK_ADMIN_PASSWORD=master

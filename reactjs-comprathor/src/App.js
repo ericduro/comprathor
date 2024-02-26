@@ -17,10 +17,10 @@ import { httpClient } from './HttpClient';
 
 import Keycloak from 'keycloak-js';
 
-
+import { keycloak } from './Variables';
 
 let initOptions = {
-  url: 'http://localhost:9090/',
+  url: keycloak,
   realm: 'SpringBootKeycloak',
   clientId: 'login-app',
 }
@@ -35,10 +35,10 @@ kc.init({
   if (!auth){
     window.location.reload();
   } else {
-    //console.info("Authenticated");
-    //console.log('auth', auth)
-    //console.log('Keycloak', kc)
-    //console.log('Access Token', kc.token)
+    console.info("Authenticated");
+    console.log('auth', auth)
+    console.log('Keycloak', kc)
+    console.log('Access Token', kc.token)
     
     httpClient.defaults.headers.common['Authorization'] = 'Bearer ' + kc.token;
 
@@ -50,50 +50,7 @@ kc.init({
   console.error("Authentication Failed")
 });
 
-function App() {
-  
-
-  /*useEffect(() => {
-    // Llama al método getAllProducts al montar el componente
-    productApi.getAllProducts((error, data) => {
-      if (error) {
-        console.error('Error al obtener todos los productos:', error);
-      } else {
-        console.log('Productos obtenidos con éxito:', data);
-        setProducts(data); // Actualiza el estado con los productos obtenidos
-      }
-    });
-  }, []);*/
-
-  /*const callBackend = async () => {
-    try {
-      // Realiza una solicitud directa al backend utilizando fetch
-      const response = await fetch('http://localhost:8080/category/all', {
-        method: 'GET',
-        headers: {
-          'Authorization': `Bearer ${kc.token}`
-        },
-      });
-
-      //console.log('Token de Acceso:', kc.token);
-      //console.log('Encabezado de Autorización:', 'Bearer ' + kc.token);
-      //console.log('Roles del Token:', kc.tokenParsed.realm_access.roles);
-      //console.log('Roles del Token:', kc.tokenParsed.realm_access.roles);
-
-      if (response.ok) {
-        // Si la respuesta es exitosa, obtén los datos y muestra en la consola
-        const data = await response.json();
-        console.log('Respuesta del servidor:', data);
-      } else {
-        // Si la respuesta no es exitosa, muestra un mensaje de error
-        console.error('Error en la respuesta del servidor:', response.statusText);
-      }
-    } catch (error) {
-      // Maneja errores de la solicitud
-      console.error('Error al realizar la solicitud:', error);
-    }
-  };*/
-  
+function App() {  
 
   return (
     <React.Fragment>

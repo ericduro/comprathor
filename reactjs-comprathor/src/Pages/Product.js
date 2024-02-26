@@ -4,6 +4,8 @@ import { Dropdown } from 'primereact/dropdown';
 import { Dialog } from 'primereact/dialog';
 import './Product.css'; // Importa un archivo CSS para estilos adicionales
 
+import { backend } from '../Variables';
+
 function Product() {
   const [products, setProducts] = useState([]);
   const [categories, setCategories] = useState([]);
@@ -24,7 +26,7 @@ function Product() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const productResponse = await fetch('http://localhost:8080/product/all', {
+        const productResponse = await fetch(backend + '/product/all', {
           method: 'GET',
           headers: {
             'Authorization': `Bearer ${kc.token}`
@@ -39,7 +41,7 @@ function Product() {
           console.error('Error en la respuesta del servidor (productos):', productResponse.statusText);
         }
 
-        const categoryResponse = await fetch('http://localhost:8080/category/all', {
+        const categoryResponse = await fetch(backend + '/category/all', {
           method: 'GET',
           headers: {
             'Authorization': `Bearer ${kc.token}`
@@ -91,7 +93,7 @@ function Product() {
         id_category: Number(selectedCategoryDialog),
       };
   
-      const response = await fetch('http://localhost:8080/product/save', {
+      const response = await fetch(backend + '/product/save', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

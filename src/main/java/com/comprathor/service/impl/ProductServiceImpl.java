@@ -1,12 +1,20 @@
 package com.comprathor.service.impl;
 
 import com.comprathor.model.ProductModel;
+import com.comprathor.repository.CategoryRepo;
 import com.comprathor.repository.ProductRepo;
+import com.comprathor.repository.entity.Category;
 import com.comprathor.repository.entity.Product;
 import com.comprathor.service.IProductService;
+import org.checkerframework.checker.units.qual.A;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -16,6 +24,8 @@ public class ProductServiceImpl implements IProductService {
 
     @Autowired
     private ProductRepo productRepo;
+    @Autowired
+    private CategoryRepo categoryRepo;
 
     @Override
     public List<ProductModel> getAllProducts() {
@@ -79,4 +89,17 @@ public class ProductServiceImpl implements IProductService {
                 .id_category(product.getId_category())
                 .build();
     }
+
+    @Override
+    public List<ProductModel> getProductsByCategory(int categoryId) {
+        Optional<Category> category = categoryRepo.findById(categoryId); // Aquí deberías tener un CategoryRepo para buscar la categoría por su id
+        List<Product> products = productRepo.findByCategory(category);
+        return products.stream()
+                .map(this::convertToProductModel)
+                .collect(Collectors.toList());
+    }
+
+
+
+
 }

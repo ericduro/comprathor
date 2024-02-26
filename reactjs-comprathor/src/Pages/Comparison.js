@@ -3,6 +3,8 @@ import { kc } from '../App';
 import { Dropdown } from 'primereact/dropdown';
 import './Comparison.css';
 
+import { backend } from '../Variables';
+
 function Comparison() {
   const [categories, setCategories] = useState([]);
   const [selectedCategory, setSelectedCategory] = useState('');
@@ -15,7 +17,7 @@ function Comparison() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const productResponse = await fetch('http://localhost:8080/product/all', {
+        const productResponse = await fetch(backend + '/product/all', {
           method: 'GET',
           headers: {
             'Authorization': `Bearer ${kc.token}`
@@ -29,7 +31,7 @@ function Comparison() {
           console.error('Error en la respuesta del servidor (productos):', productResponse.statusText);
         }
 
-        const categoryResponse = await fetch('http://localhost:8080/category/all', {
+        const categoryResponse = await fetch(backend + '/category/all', {
           method: 'GET',
           headers: {
             'Authorization': `Bearer ${kc.token}`

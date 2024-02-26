@@ -6,6 +6,8 @@ import { kc } from '../App';
 import { Button } from 'primereact/button';
 import { Card } from 'primereact/card';
 
+import { frontend } from '../Variables';
+
 function User(){
 
   const [infoMessage, setInfoMessage] = useState(''); 
@@ -50,14 +52,10 @@ function User(){
               
 
               
-              <Button onClick={() => { kc.logout({ redirectUri: 'http://localhost:3000/' }) }}
+              <Button onClick={() => { kc.logout({ redirectUri: frontend }) }}
                 className="m-1 custom-btn-style"
                 label='Cerrar sesión'
                 severity="danger" />
-
-              
-
-              
 
             </div>
           </div>
@@ -73,10 +71,7 @@ function User(){
           <div className='col-2'></div>
         </div>
 
-
-
       </div>
-      
       
     )
 }

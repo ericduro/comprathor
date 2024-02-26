@@ -1,20 +1,4 @@
-# Stage 1: Build the frontend
-FROM node:14 AS frontend-builder
-
-WORKDIR /app
-
-COPY ./reactjs-comprathor/package.json .
-COPY ./reactjs-comprathor/package-lock.json .
-
-RUN npm install
-
-COPY ./reactjs-comprathor .
-
-EXPOSE 3000
-
-CMD ["npm", "start"]
-
-# Stage 2: Build the backend
+# Stage 1: Build the backend
 FROM maven:3.8.4-openjdk-17 AS backend-builder
 
 COPY . /app/source
@@ -23,7 +7,7 @@ WORKDIR /app/source
 
 RUN mvn clean package -DskipTests
 
-# Stage 3: Create the runtime image
+# Stage 2: Create the runtime image
 FROM openjdk:17 AS runtime
 
 WORKDIR /app
